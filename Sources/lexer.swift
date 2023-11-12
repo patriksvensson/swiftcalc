@@ -106,7 +106,7 @@ class PeekableString {
 
 func tokenize(input: String) -> [Token] {
     var tokens: [Token] = []
-    let stream = PeekableString(text: input)
+    let stream = Peekable<String>(data: input)
     while !stream.isAtEnd {
         switch stream.peek() {
             case let .some(c):
@@ -150,7 +150,7 @@ func tokenize(input: String) -> [Token] {
     return tokens
 }
 
-func parseInteger(stream: PeekableString) -> Int {
+func parseInteger(stream: Peekable<String>) -> Int {
     var accumulator: [Character] = []
     loop: while !stream.isAtEnd {
         switch stream.peek() {
