@@ -45,32 +45,24 @@ protocol Visitor {
 
 struct Evaluator : Visitor {
     func visitAdd(left: Expression, right: Expression) -> Int {
-        let leftResult = left.Accept(visitor: self)
-        let rightResult = right.Accept(visitor: self)
-        return leftResult + rightResult
+        return left.Accept(visitor: self) + right.Accept(visitor: self)
     }
     
     func visitSubtract(left: Expression, right: Expression) -> Int {
-        let leftResult = left.Accept(visitor: self)
-        let rightResult = right.Accept(visitor: self)
-        return leftResult - rightResult
+        return left.Accept(visitor: self)  - right.Accept(visitor: self)
     }
     
     func visitMultiply(left: Expression, right: Expression) -> Int {
-        let leftResult = left.Accept(visitor: self)
-        let rightResult = right.Accept(visitor: self)
-        return leftResult * rightResult
+        return left.Accept(visitor: self)  * right.Accept(visitor: self)
     }
     
     func visitDivide(left: Expression, right: Expression) -> Int {
-        let leftResult = left.Accept(visitor: self)
-        let rightResult = right.Accept(visitor: self)
-        return leftResult / rightResult
+        return left.Accept(visitor: self)  / right.Accept(visitor: self)
     }
 }
 
-func parse(input: String) throws -> Expression {
-    let tokens = try tokenize(input: input)
+func parse(input: String) -> Expression {
+    let tokens = tokenize(input: input)
     return parse(tokens: tokens)
 }
 
